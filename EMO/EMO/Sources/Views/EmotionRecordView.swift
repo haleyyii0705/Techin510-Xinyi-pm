@@ -1,8 +1,11 @@
 import SwiftUI
 
 struct EmotionRecordView: View {
-    @State private var selectedMood: Mood = .neutral
+    @StateObject private var emotionService = EmotionDataService.shared
+    @State private var selectedMood: Mood = Mood.neutral
     @State private var note: String = ""
+    @State private var showingAlert = false
+    @State private var alertMessage = ""
     
     var body: some View {
         NavigationView {
@@ -26,12 +29,22 @@ struct EmotionRecordView: View {
                 }
             }
             .navigationTitle("Record Mood")
+            .alert("Record Saved", isPresented: $showingAlert) {
+                Button("OK") {
+                    note = ""
+                    selectedMood = .neutral
+                }
+            } message: {
+                Text(alertMessage)
+            }
         }
     }
     
     private func saveRecord() {
-        // TODO: Implement save record logic
-        print("Saving mood record: \(selectedMood), note: \(note)")
+        let record = EmotionRecord(mood: selectedMood, note: note)
+        emotionService.saveRecord(record)
+        alertMessage = "Your mood has been recorded successfully!"
+        showingAlert = true
     }
 }
 
@@ -50,38 +63,6 @@ struct MoodPicker: View {
             }
         }
         .pickerStyle(SegmentedPickerStyle())
-    }
-}
-
-enum Mood: String, CaseIterable, Identifiable {
-    case veryHappy = "Very Happy"
-    case happy = "Happy"
-    case neutral = "Neutral"
-    case sad = "Sad"
-    case verySad = "Very Sad"
-    
-    var id: String { self.rawValue }
-    
-    var description: String { self.rawValue }
-    
-    var icon: String {
-        switch self {
-        case .veryHappy: return "face.smiling.fill"
-        case .happy: return "face.smiling"
-        case .neutral: return "face.neutral"
-        case .sad: return "face.frown"
-        case .verySad: return "face.frown.fill"
-        }
-    }
-    
-    var color: Color {
-        switch self {
-        case .veryHappy: return .yellow
-        case .happy: return .green
-        case .neutral: return .blue
-        case .sad: return .orange
-        case .verySad: return .red
-        }
     }
 }
 

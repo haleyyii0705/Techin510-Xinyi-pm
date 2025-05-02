@@ -1,19 +1,27 @@
 import SwiftUI
+import Charts
 
 struct StatisticsView: View {
+    @StateObject private var emotionService = EmotionDataService.shared
+    
     var body: some View {
         NavigationView {
             List {
                 Section(header: Text("Emotion Trend")) {
-                    EmotionTrendChart()
+                    EmotionTrendChart(records: emotionService.getAllRecords())
                 }
                 
                 Section(header: Text("Emotion Distribution")) {
-                    EmotionDistributionChart()
+                    EmotionDistributionChart(distribution: emotionService.getMoodDistribution())
                 }
                 
                 Section(header: Text("Statistics Summary")) {
-                    StatisticsSummary()
+                    StatisticsSummary(
+                        totalRecords: emotionService.getAllRecords().count,
+                        averageMood: emotionService.getAverageMood()?.description ?? "No data",
+                        mostCommonMood: emotionService.getMoodDistribution()
+                            .max(by: { $0.value < $1.value })?.key.description ?? "No data"
+                    )
                 }
             }
             .navigationTitle("Statistics")
@@ -22,33 +30,71 @@ struct StatisticsView: View {
 }
 
 struct EmotionTrendChart: View {
+    let records: [EmotionRecord]
+    
     var body: some View {
-        VStack {
-            Text("Emotion Trend Chart")
+        if records.isEmpty {
+            Text("No data available")
                 .foregroundColor(.gray)
-            // TODO: Implement emotion trend chart
+                .frame(height: 200)
+        } else {
+            Chart {
+                ForEach(records) { record in
+                    LineMark(
+                        x: .value("Date", record.timestamp),
+                        y: .value("Mood", moodValue(record.mood))
+                    )
+                    .foregroundStyle(record.mood.color)
+                }
+            }
+            .frame(height: 200)
         }
-        .frame(height: 200)
+    }
+    
+    private func moodValue(_ mood: Mood) -> Int {
+        switch mood {
+        case .veryHappy: return 5
+        case .happy: return 4
+        case .neutral: return 3
+        case .sad: return 2
+        case .verySad: return 1
+        }
     }
 }
 
 struct EmotionDistributionChart: View {
+    let distribution: [Mood: Int]
+    
     var body: some View {
-        VStack {
-            Text("Emotion Distribution Chart")
+        if distribution.isEmpty {
+            Text("No data available")
                 .foregroundColor(.gray)
-            // TODO: Implement emotion distribution chart
+                .frame(height: 200)
+        } else {
+            Chart {
+                ForEach(Mood.allCases) { mood in
+                    BarMark(
+                        x: .value("Mood", mood.description),
+                        y: .value("Count", distribution[mood] ?? 0)
+                    )
+                    .foregroundStyle(mood.color)
+                }
+            }
+            .frame(height: 200)
         }
-        .frame(height: 200)
     }
 }
 
 struct StatisticsSummary: View {
+    let totalRecords: Int
+    let averageMood: String
+    let mostCommonMood: String
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            StatRow(title: "Total Records", value: "0")
-            StatRow(title: "Average Mood", value: "Neutral")
-            StatRow(title: "Most Common Mood", value: "No data")
+            StatRow(title: "Total Records", value: "\(totalRecords)")
+            StatRow(title: "Average Mood", value: averageMood)
+            StatRow(title: "Most Common Mood", value: mostCommonMood)
         }
     }
 }

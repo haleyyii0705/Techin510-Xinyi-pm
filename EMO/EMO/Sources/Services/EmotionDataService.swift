@@ -1,19 +1,38 @@
 import Foundation
+import Combine
 
-class EmotionDataService {
+class EmotionDataService: ObservableObject {
     static let shared = EmotionDataService()
     private let userDefaults = UserDefaults.standard
     private let recordsKey = "emotionRecords"
+    private let currentMoodKey = "currentMood"
     
-    private init() {}
+    @Published var records: [EmotionRecord] = []
+    
+    private init() {
+        self.records = getAllRecords()
+    }
+    
+    func saveEmotion(mood: Mood) {
+        let record = EmotionRecord(mood: mood, note: "")
+        saveRecord(record)
+        userDefaults.set(mood.rawValue, forKey: currentMoodKey)
+    }
+    
+    func getCurrentMood() -> Mood? {
+        guard let moodString = userDefaults.string(forKey: currentMoodKey) else {
+            return nil
+        }
+        return Mood(rawValue: moodString)
+    }
     
     func saveRecord(_ record: EmotionRecord) {
-        var records = getAllRecords()
-        records.append(record)
-        
-        if let encoded = try? JSONEncoder().encode(records) {
+        var allRecords = getAllRecords()
+        allRecords.append(record)
+        if let encoded = try? JSONEncoder().encode(allRecords) {
             userDefaults.set(encoded, forKey: recordsKey)
         }
+        self.records = allRecords.sorted { $0.timestamp > $1.timestamp }
     }
     
     func getAllRecords() -> [EmotionRecord] {
@@ -25,7 +44,7 @@ class EmotionDataService {
     }
     
     func getRecentRecords(limit: Int = 5) -> [EmotionRecord] {
-        return Array(getAllRecords().prefix(limit))
+        return Array(records.prefix(limit))
     }
     
     func getRecordsByDateRange(from: Date, to: Date) -> [EmotionRecord] {

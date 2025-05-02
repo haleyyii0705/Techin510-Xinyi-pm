@@ -1,60 +1,116 @@
-# TECHIN510
 TECHIN510 project - Front-End
 
 🧩 **Project Scope**  
-Coeus is a responsive web application tailored for individuals with specific grocery shopping needs. The goal is to build a mobile-friendly demo that simulates an app-like experience within a browser. This demo will serve for investor pitching and early-stage user testing, focusing on functionality, usability, and personalized grocery recommendations.
+EMO is a mobile-friendly emotion tracking application built with SwiftUI. The goal is to provide users with an intuitive way to record, review, and analyze their daily moods. The app is designed for personal wellness tracking and can be used for early-stage user testing or as a demo for further development.
 
 🎯 **Target Users**  
-- Individuals with dietary restrictions, allergies, or religious/health-related food requirements
-- Budget-conscious consumers comparing ingredients, price, or brand
-- Users seeking fast, personalized grocery recommendations on mobile devices
+- Individuals interested in tracking their emotional well-being
+- Users who want to visualize mood trends and patterns
+- Anyone seeking a simple, private, and local mood journal
 
 🚀 **Features**
 
 **Phase 1 – MVP**  
-- Preference Settings: Users can input dietary restrictions, allergies, and preferences
-- Match Recommendations: System suggests products based on user inputs
-- Product Sorting: Sort by need, price, or popularity
+- Record Today's Mood: Users can select and save their mood for the day, which is instantly added to the recent records.
+- Add Notes: Users can attach notes to each mood record for more context.
+- Auto-updating Recent Records: After saving a mood, the "Recent Records" section on the home page instantly displays the latest data—no manual refresh needed (powered by `@Published`).
+- Mood Trends & Distribution: Built-in line and bar charts (using Swift Charts) provide a visual overview of mood changes and distribution.
+- Local Data Persistence: All data is stored locally and will not be lost after restarting the app.
 
 **Phase 2 – Future Scope**  
-- Basic Login System: User authentication for personalized access
-- User Data Tracking: Monitor and store user behavior and preferences
-- Data Visualization: Visual insights into shopping patterns and habits
+- User Authentication: Secure login for personalized access
+- Cloud Sync: Option to back up and sync mood data across devices
+- Advanced Analytics: More detailed statistics and insights
 
 🗓️ **Timeline**
 
-| Phase | Duration |
-|-------|----------|
-| Low-Fidelity Design | 1 week |
-| High-Fidelity Design | 1 week |
-| Frontend Prototype (MVP) | 1 week |
-| Backend Development | 3 weeks |
-| Testing & Evaluation | 1 week |
+| Phase                  | Duration |
+|------------------------|----------|
+| Low-Fidelity Design    | 1 week   |
+| High-Fidelity Design   | 1 week   |
+| Frontend Prototype     | 1 week   |
+| Backend Development    | 3 weeks  |
+| Testing & Evaluation   | 1 week   |
 
 👥 **Contact Information**  
 - Client: Linzhengrong Shao – sshaolinzr@gmail.com
 - Developer: Xinyi Hu – haleyyii0705@gmail.com
 
 ## develop
-- Front-End：SwiftUI
-- Back-End：
-- Database：
+- Front-End: SwiftUI
+- Back-End: (future scope)
+- Database: Local (UserDefaults), future: CloudKit or other
 
 ## development environment setting
-1. clone repository
+1. Clone repository
 ```bash
 git clone [repository-url]
 ```
-
-2. install dependencies
-```bash
-# 待补充具体依赖安装步骤
-```
+2. Install dependencies
+- SwiftUI, Combine, Charts (Swift Charts)
 
 3. Run the Project
-```bash
-# 待补充具体运行步骤
+- Open in Xcode and run on a simulator or device
+
+---
+
+## Recent Updates
+- Recent Records now auto-refreshes after saving a new mood, without manual reload (using `@Published`).
+- All views share the same singleton data service (`EmotionDataService.shared`).
+- Removed duplicate `Mood` enum definitions; now only one source of truth in the Models folder.
+- Statistics and distribution charts are implemented using Swift Charts.
+- Centralized definition of the `Mood` enum and `EmotionRecord` struct to avoid type conflicts.
+
+## Project Overview
+EMO is an emotion tracking app built with SwiftUI. It allows users to record their daily mood, add notes, view recent records, and analyze mood trends and statistics.
+
+## Key Features
+- **Record Today's Mood**: Select your mood and save it, which will be automatically added to the recent records.
+- **Add Notes**: Attach a note to each mood record for more context.
+- **Auto-updating Recent Records**: After saving your mood, the "Recent Records" section on the home page will instantly display the latest data—no manual refresh needed, thanks to the use of `@Published` in the data service.
+- **Mood Trends & Distribution Statistics**: Built-in line and bar charts (using Swift Charts) provide a visual overview of your mood changes and distribution.
+- **Local Data Persistence**: All data is stored locally and will not be lost after restarting the app.
+
+## Technical Highlights
+- Uses `@StateObject` and `@Published` for data-driven UI auto-refresh. The `records` property in `EmotionDataService` is marked as `@Published`, so any change (such as saving today's mood) will immediately update all views that depend on it.
+- Employs a singleton `EmotionDataService` as the global data source, shared across all views. All mood records and statistics are managed through this single instance.
+- Centralized definition of the `Mood` enum and `EmotionRecord` struct in the Models folder to avoid type conflicts and ambiguity. Any duplicate definitions have been removed.
+- Statistics page utilizes Swift Charts for visualizing mood trends and distribution.
+
+## Project Structure
 ```
+EMO/
+├── Sources/
+│   ├── Models/
+│   │   └── EmotionRecord.swift
+│   ├── Services/
+│   │   └── EmotionDataService.swift
+│   └── Views/
+│       ├── HomeView.swift
+│       ├── EmotionRecordView.swift
+│       └── StatisticsView.swift
+├── README.md
+└── ...
+```
+
+## Getting Started
+1. Open the project in Xcode.
+2. Run on a simulator or a real device.
+3. Select and save your mood on the home page to experience instant updates and statistics.
+
+## Dependencies
+- SwiftUI
+- Combine
+- Charts (Swift Charts)
+
+## Notes
+To customize mood types, statistics, or UI style, edit `Models/EmotionRecord.swift` and the relevant view files.
+
+**Recent changes:**
+- Recent Records now auto-refreshes after saving a new mood, without manual reload.
+- All views share the same singleton data service (`EmotionDataService.shared`).
+- Removed duplicate `Mood` enum definitions; now only one source of truth in the Models folder.
+- Statistics and distribution charts are implemented using Swift Charts.
 
 
 
