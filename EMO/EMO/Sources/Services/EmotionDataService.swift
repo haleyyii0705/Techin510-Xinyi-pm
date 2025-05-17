@@ -88,4 +88,19 @@ class EmotionDataService: ObservableObject {
         default: return .verySad
         }
     }
+    
+    func saveEmotion(mood: Mood, for date: Date) {
+        var allRecords = getAllRecords()
+        if let idx = allRecords.firstIndex(where: { Calendar.current.isDate($0.timestamp, inSameDayAs: date) }) {
+            let old = allRecords[idx]
+            allRecords[idx] = EmotionRecord(id: old.id, mood: mood, note: old.note, timestamp: date)
+        } else {
+            let record = EmotionRecord(mood: mood, note: "", timestamp: date)
+            allRecords.append(record)
+        }
+        if let encoded = try? JSONEncoder().encode(allRecords) {
+            userDefaults.set(encoded, forKey: recordsKey)
+        }
+        self.records = allRecords.sorted { $0.timestamp > $1.timestamp }
+    }
 } 
