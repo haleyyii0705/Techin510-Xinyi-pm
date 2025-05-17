@@ -112,7 +112,7 @@ To customize mood types, statistics, or UI style, edit `Models/EmotionRecord.swi
 - Removed duplicate `Mood` enum definitions; now only one source of truth in the Models folder.
 - Statistics and distribution charts are implemented using Swift Charts.
 
-## Latest Progress (June 2024)
+## Latest Progress (May16 2025)
 - The homepage now features a full calendar. You can click any date to add or edit your mood via a popup.
 - Each calendar cell displays the mood icon for that day.
 - The homepage layout is simplified, focusing on the calendar and recent mood records for a cleaner experience.
