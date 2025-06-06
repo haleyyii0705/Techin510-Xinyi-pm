@@ -30,6 +30,13 @@ struct ContentView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .onAppear {
+            // 打印所有可用字体
+            for family in UIFont.familyNames {
+                print("family: \(family)")
+                for name in UIFont.fontNames(forFamilyName: family) {
+                    print("  name: \(name)")
+                }
+            }
             didAppear = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 showLogo = false

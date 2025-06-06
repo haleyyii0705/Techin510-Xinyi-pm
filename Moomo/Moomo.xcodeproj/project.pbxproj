@@ -6,7 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		10D39AE72DF35C9A00CAA268 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D39AE62DF35C9A00CAA268 /* WidgetKit.framework */; };
+		10D39AE92DF35C9A00CAA268 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D39AE82DF35C9A00CAA268 /* SwiftUI.framework */; };
+		10D39AFA2DF35C9B00CAA268 /* Moomo WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 10D39AE42DF35C9A00CAA268 /* Moomo WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		10D39AF82DF35C9B00CAA268 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10F363602DE99EE800AF160C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10D39AE32DF35C9A00CAA268;
+			remoteInfo = "Moomo WidgetExtension";
+		};
 		10F363772DE99EE900AF160C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 10F363602DE99EE800AF160C /* Project object */;
@@ -23,21 +36,75 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		10D39AFF2DF35C9B00CAA268 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				10D39AFA2DF35C9B00CAA268 /* Moomo WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		10D39AE42DF35C9A00CAA268 /* Moomo WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Moomo WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D39AE62DF35C9A00CAA268 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		10D39AE82DF35C9A00CAA268 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		10F363682DE99EE800AF160C /* Moomo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moomo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10F363762DE99EE900AF160C /* MoomoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoomoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10F363802DE99EE900AF160C /* MoomoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoomoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		10D076102DF2A1870034D366 /* Exceptions for "Moomo" folder in "Moomo" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 10F363672DE99EE800AF160C /* Moomo */;
+		};
+		10D39AFE2DF35C9B00CAA268 /* Exceptions for "Moomo Widget" folder in "Moomo WidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 10D39AE32DF35C9A00CAA268 /* Moomo WidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		10D39AEA2DF35C9A00CAA268 /* Moomo Widget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				10D39AFE2DF35C9B00CAA268 /* Exceptions for "Moomo Widget" folder in "Moomo WidgetExtension" target */,
+			);
+			path = "Moomo Widget";
+			sourceTree = "<group>";
+		};
 		10F3636A2DE99EE800AF160C /* Moomo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				10D076102DF2A1870034D366 /* Exceptions for "Moomo" folder in "Moomo" target */,
+			);
 			path = Moomo;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		10D39AE12DF35C9A00CAA268 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10D39AE92DF35C9A00CAA268 /* SwiftUI.framework in Frameworks */,
+				10D39AE72DF35C9A00CAA268 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		10F363652DE99EE800AF160C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -62,10 +129,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10D39AE52DF35C9A00CAA268 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10D39AE62DF35C9A00CAA268 /* WidgetKit.framework */,
+				10D39AE82DF35C9A00CAA268 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		10F3635F2DE99EE800AF160C = {
 			isa = PBXGroup;
 			children = (
 				10F3636A2DE99EE800AF160C /* Moomo */,
+				10D39AEA2DF35C9A00CAA268 /* Moomo Widget */,
+				10D39AE52DF35C9A00CAA268 /* Frameworks */,
 				10F363692DE99EE800AF160C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +154,7 @@
 				10F363682DE99EE800AF160C /* Moomo.app */,
 				10F363762DE99EE900AF160C /* MoomoTests.xctest */,
 				10F363802DE99EE900AF160C /* MoomoUITests.xctest */,
+				10D39AE42DF35C9A00CAA268 /* Moomo WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +162,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		10D39AE32DF35C9A00CAA268 /* Moomo WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10D39AFB2DF35C9B00CAA268 /* Build configuration list for PBXNativeTarget "Moomo WidgetExtension" */;
+			buildPhases = (
+				10D39AE02DF35C9A00CAA268 /* Sources */,
+				10D39AE12DF35C9A00CAA268 /* Frameworks */,
+				10D39AE22DF35C9A00CAA268 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				10D39AEA2DF35C9A00CAA268 /* Moomo Widget */,
+			);
+			name = "Moomo WidgetExtension";
+			packageProductDependencies = (
+			);
+			productName = "Moomo WidgetExtension";
+			productReference = 10D39AE42DF35C9A00CAA268 /* Moomo WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		10F363672DE99EE800AF160C /* Moomo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 10F3638A2DE99EE900AF160C /* Build configuration list for PBXNativeTarget "Moomo" */;
@@ -90,10 +191,12 @@
 				10F363642DE99EE800AF160C /* Sources */,
 				10F363652DE99EE800AF160C /* Frameworks */,
 				10F363662DE99EE800AF160C /* Resources */,
+				10D39AFF2DF35C9B00CAA268 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				10D39AF92DF35C9B00CAA268 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				10F3636A2DE99EE800AF160C /* Moomo */,
@@ -155,6 +258,9 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					10D39AE32DF35C9A00CAA268 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					10F363672DE99EE800AF160C = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -185,11 +291,19 @@
 				10F363672DE99EE800AF160C /* Moomo */,
 				10F363752DE99EE900AF160C /* MoomoTests */,
 				10F3637F2DE99EE900AF160C /* MoomoUITests */,
+				10D39AE32DF35C9A00CAA268 /* Moomo WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		10D39AE22DF35C9A00CAA268 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		10F363662DE99EE800AF160C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -214,6 +328,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		10D39AE02DF35C9A00CAA268 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		10F363642DE99EE800AF160C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -238,6 +359,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		10D39AF92DF35C9B00CAA268 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10D39AE32DF35C9A00CAA268 /* Moomo WidgetExtension */;
+			targetProxy = 10D39AF82DF35C9B00CAA268 /* PBXContainerItemProxy */;
+		};
 		10F363782DE99EE900AF160C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 10F363672DE99EE800AF160C /* Moomo */;
@@ -251,6 +377,63 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		10D39AFC2DF35C9B00CAA268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Moomo Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Moomo Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "sl.Moomo.Moomo-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		10D39AFD2DF35C9B00CAA268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Moomo Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Moomo Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "sl.Moomo.Moomo-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		10F363882DE99EE900AF160C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -375,6 +558,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Moomo/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -412,6 +597,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Moomo/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -528,6 +715,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		10D39AFB2DF35C9B00CAA268 /* Build configuration list for PBXNativeTarget "Moomo WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10D39AFC2DF35C9B00CAA268 /* Debug */,
+				10D39AFD2DF35C9B00CAA268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		10F363632DE99EE800AF160C /* Build configuration list for PBXProject "Moomo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
